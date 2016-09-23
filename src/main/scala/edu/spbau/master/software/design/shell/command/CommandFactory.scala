@@ -1,6 +1,6 @@
 package edu.spbau.master.software.design.shell.command
 
-import edu.spbau.master.software.design.shell.app.{Backend, Environment}
+import edu.spbau.master.software.design.shell.app.Environment
 import edu.spbau.master.software.design.shell.app.signals.ExitSignalUpdater
 import edu.spbau.master.software.design.shell.command.impl._
 import edu.spbau.master.software.design.shell.model.CommandName
@@ -34,6 +34,12 @@ class CommandFactory(environment: Environment,
     },
     CommandName("grep") → {
       new GrepCommand
+    },
+    CommandName("ls") → {
+      new LsCommand()
+    },
+    CommandName("cd") → {
+      new CdCommand()
     }
   )
 
