@@ -8,11 +8,13 @@ import edu.spbau.master.software.design.shell.model.CommandModel
 
 /**
   * Exit from REPL
-  *
-  * @author Baidin Dima
   */
 class ExitCommand(exitSignalUpdater: ExitSignalUpdater) extends Command {
 
+  /**
+    * Exit from REPL
+    *
+    */
   override def execute(command: CommandModel): ReturnType = {
     exitSignalUpdater.isExit = true
     ""

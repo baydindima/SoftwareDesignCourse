@@ -8,9 +8,9 @@ import scala.util.{Failure, Success, Try}
 
 
 /**
-  * Execute commands
-  *
-  * @author Baidin Dima
+  * Execute commands in pipe.
+  * Result of execution command transfer to next command as last arg.
+  * Or if command is last, return result.
   */
 abstract class CommandManager(commandFactory: CommandFactory)
   extends Logging with ExitSignalListener {
@@ -19,7 +19,7 @@ abstract class CommandManager(commandFactory: CommandFactory)
                    arg: Option[Command.ReturnType]): Try[Command.ReturnType] = commands match {
     case commandModel :: rest ⇒
       val command = commandFactory.newCommand(commandModel.name)
-      val args = commandModel.args ++ arg.map(CommandArg(_))
+      val args = commandModel.args ++ arg.map(CommandArg.apply)
       val newCommandModel = CommandModel(commandModel.name, args: _*)
       Try(command.execute(newCommandModel)) flatMap {
         case value ⇒
@@ -34,6 +34,11 @@ abstract class CommandManager(commandFactory: CommandFactory)
       Failure(new RuntimeException("Empty command list"))
   }
 
+  /**
+    * Execute commands in pipe.
+    * Result of execution command transfer to next command as last arg.
+    * Or if command is last, return result.
+    */
   def executeWithPipe(commands: Seq[CommandModel]): Command.ReturnType = {
     log.debug("Start execute commands")
 

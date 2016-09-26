@@ -4,7 +4,7 @@ import scala.language.postfixOps
 import scala.util.matching.Regex
 
 /**
-  * @author Baidin Dima
+  * Utils for work with regexp
   */
 object RegexpUtil {
 
@@ -19,10 +19,10 @@ object RegexpUtil {
   private[parser] val wordRegexp = union(lettersRegex, digitsRegex, punctuationRegex)
   private[parser] val blockRegexp = union(wordRegexp, pipeRegexp, spaceRegex, assignRegex)
 
-  private[parser] val variableRegex = """\$""" + wordRegexp.regex r
+  private[parser] val variableRegex = """\$""" + wordRegexp.toString r
 
   private[parser] def union(regexes: Regex*): Regex =
-    regexes map (_.regex replaceAllLiterally("()", "")) mkString("(", "|", ")+") r
+    regexes map (_.toString replaceAllLiterally("()", "")) mkString("(", "|", ")+") r
 
 
 }

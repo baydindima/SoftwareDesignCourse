@@ -5,9 +5,7 @@ import edu.spbau.master.software.design.shell.command.CommandFactory
 import edu.spbau.master.software.design.shell.parser.{CommandParser, VariableResolver}
 
 /**
-  * Init core classes
-  *
-  * @author Baidin Dima
+  * Builder of all core classes
   */
 object BackendBuilder {
 
@@ -22,6 +20,9 @@ object BackendBuilder {
     new CommandFactory(environment, signalUpdater)
   }
 
+  /**
+    * Build of all core classes
+    */
   def build(): Backend = {
     val environment = buildEnvironment
     val signalUpdater = new ExitSignalUpdater

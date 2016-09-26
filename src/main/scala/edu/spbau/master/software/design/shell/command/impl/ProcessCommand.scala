@@ -8,11 +8,12 @@ import scala.language.postfixOps
 import scala.sys.process._
 
 /**
-  * Execute process
-  *
-  * @author Baidin Dima
+  * Execute external process
   */
 class ProcessCommand extends Command{
+  /**
+    * Execute external process
+    */
   override def execute(command: CommandModel): ReturnType = {
       (Seq(command.name.name) ++ command.args.map(_.value)).!!
   }

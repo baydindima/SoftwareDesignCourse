@@ -1,6 +1,10 @@
 package edu.spbau.master.software.design.shell.parser
 
+import edu.spbau.master.software.design.shell.app.Environment
+import edu.spbau.master.software.design.shell.model.Variable
 import org.scalatest.FlatSpec
+
+import scala.language.postfixOps
 
 /**
   * @author Baidin Dima
@@ -16,6 +20,15 @@ object TestUtils extends FlatSpec{
       fail(s"Expected doesn't match actual! expected: $exp; actual: $act")
     }
     }
+  }
+
+  def getCommandParser(variables: Variable*): CommandParser = new CommandParser(getVariableResolver(variables: _*))
+
+
+  def getVariableResolver(variables: Variable*): VariableResolver = {
+    new VariableResolver(
+      new Environment(variables map (v ⇒ (v name, v value)) toMap)
+    )
   }
 
 }

@@ -6,11 +6,12 @@ import edu.spbau.master.software.design.shell.command.Command.ReturnType
 import edu.spbau.master.software.design.shell.model.{CommandModel, VariableName, VariableValue}
 
 /**
-  * Set variable value in environment
-  *
-  * @author Baidin Dima
+  * Add variable value to environment.
   */
 class AssignmentCommand(environment: Environment) extends Command {
+  /**
+    * Add variable value to environment.
+    */
   override def execute(command: CommandModel): ReturnType = {
     require(command.args.length == 2, "Assign must have 2 args")
 

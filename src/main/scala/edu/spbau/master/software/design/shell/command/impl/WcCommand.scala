@@ -7,10 +7,13 @@ import edu.spbau.master.software.design.shell.command.Command.ReturnType
 import edu.spbau.master.software.design.shell.model.CommandModel
 
 /**
-  *
-  * @author Baidin Dima
+  * Return count of lines, words and chars in string
   */
 class WcCommand extends Command {
+
+  /**
+    * Return count of lines, words and chars in string
+    */
   override def execute(command: CommandModel): ReturnType = {
     require(command.args.length == 1, " Cat must have 1 arg")
 

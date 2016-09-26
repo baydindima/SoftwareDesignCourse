@@ -6,9 +6,7 @@ import edu.spbau.master.software.design.shell.command.impl._
 import edu.spbau.master.software.design.shell.model.CommandName
 
 /**
-  * Creates command by command name
-  *
-  * @author Baidin Dima
+  * Creates command object by command name
   */
 class CommandFactory(environment: Environment,
                      signalUpdater: ExitSignalUpdater) {
@@ -38,6 +36,9 @@ class CommandFactory(environment: Environment,
     new ProcessCommand
   }
 
+  /**
+    * Creates command object by command name
+    */
   private[command] def newCommand(name: CommandName): Command = {
     knownCommands.getOrElse(name, getDefaultCommand)
   }

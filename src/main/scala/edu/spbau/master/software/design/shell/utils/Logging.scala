@@ -3,7 +3,7 @@ package edu.spbau.master.software.design.shell.utils
 import org.slf4j.LoggerFactory
 
 /**
-  * @author Baidin Dima
+  * Util trait for logging
   */
 trait Logging {
 

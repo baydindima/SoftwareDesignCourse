@@ -9,13 +9,14 @@ import scala.io.StdIn._
 import scala.util.{Failure, Success}
 
 /**
-  * Read console and print response
-  *
-  * @author Baidin Dima
+  * This class reads console and prints result of execution
   */
 abstract class ConsoleReader(commandParser: CommandParser,
                              commandManager: CommandManager) extends Logging with ExitSignalListener {
 
+  /**
+    * Start read console input and prints result of each line
+    */
   def startRead(): Unit = {
     while (!isExit) {
       val line = readLine

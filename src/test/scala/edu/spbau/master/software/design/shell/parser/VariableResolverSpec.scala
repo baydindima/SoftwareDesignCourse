@@ -48,11 +48,4 @@ class VariableResolverSpec extends FlatSpec {
       ): _*)(CT(NT("echo"), Seq(DT("loul hoho  haha haha  $"))))
   }
 
-
-  private def getVariableResolver(variables: V*): VariableResolver = {
-    new VariableResolver(
-      new Environment(variables map (v ⇒ (v name, v value)) toMap)
-    )
-  }
-
 }

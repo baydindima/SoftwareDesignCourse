@@ -6,7 +6,7 @@ import edu.spbau.master.software.design.shell.command.CommandManager
 import edu.spbau.master.software.design.shell.utils.Logging
 
 /**
-  * @author Baidin Dima
+  * Main class. Execution starts here.
   */
 object Main extends App with Logging {
 

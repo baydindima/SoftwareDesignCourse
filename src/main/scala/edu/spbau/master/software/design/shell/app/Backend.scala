@@ -5,7 +5,7 @@ import edu.spbau.master.software.design.shell.command.CommandFactory
 import edu.spbau.master.software.design.shell.parser.CommandParser
 
 /**
-  * @author Baidin Dima
+  * Holder of all core classes. Used for dependency injection.
   */
 case class Backend(environment: Environment,
                    commandParser: CommandParser,

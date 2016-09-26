@@ -6,11 +6,12 @@ import edu.spbau.master.software.design.shell.utils.Logging
 import scala.util.Try
 
 /**
-  * Parse string to commands
-  *
-  * @author Baidin Dima
+  * Parse string to commands sequence
   */
 class CommandParser(variableResolver: VariableResolver) extends Logging {
+  /**
+    * Parse string to commands sequence
+    */
   def apply(input: String): Try[Seq[CommandModel]] = {
     log.debug("Start of parsing {}", input)
     val result = CommandLexer(input).map(variableResolver(_).map {

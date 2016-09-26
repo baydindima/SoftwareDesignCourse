@@ -9,7 +9,7 @@ import scala.util.{Failure => TryFailure, Success => TrySuccess}
 import scala.util.parsing.combinator.RegexParsers
 
 /**
-  * @author Baidin Dima
+  * Split input string to expressions, or return failure
   */
 object CommandLexer extends RegexParsers with Logging {
   private def singleQuotedTerm: Parser[SingleQuotBlockTerm] = "\'" ~> blockRegexp <~ "\'" ^^ {
@@ -42,6 +42,9 @@ object CommandLexer extends RegexParsers with Logging {
     }
   }
 
+  /**
+    * Split input string to expressions, or return failure
+    */
   private[parser] def apply(input: String): Try[Seq[Expression]] = {
     log.debug("Start of processing")
 

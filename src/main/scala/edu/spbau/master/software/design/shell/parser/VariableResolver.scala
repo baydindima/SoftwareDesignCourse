@@ -8,7 +8,8 @@ import edu.spbau.master.software.design.shell.utils.Logging
 import scala.language.postfixOps
 
 /**
-  * @author Baidin Dima
+  * Find variables and replace name of variable to value.
+  * $varName -> varValue
   */
 class VariableResolver(environment: Environment) extends Logging {
   private def getVariableMatches(source: String): Seq[Variable] = {
@@ -39,6 +40,10 @@ class VariableResolver(environment: Environment) extends Logging {
     case term: NonQuotBlockTerm ⇒ term.copy(withVariablesSubstitution(term value))
   }
 
+  /**
+    * Find variables and replace name of variable to value.
+    * $varName -> varValue
+    */
   private[parser] def apply(commandTerms: Seq[Expression]): Seq[Expression] = {
     val result = commandTerms.map { case CommandTerm(name, args) ⇒
       val commandArgs = args.map(processTerm)
