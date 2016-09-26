@@ -6,6 +6,8 @@ import edu.spbau.master.software.design.shell.command.Command
 import edu.spbau.master.software.design.shell.command.Command.ReturnType
 import edu.spbau.master.software.design.shell.model.CommandModel
 
+import scala.util.Try
+
 /**
   * Return count of lines, words and chars in string
   */
@@ -17,7 +19,12 @@ class WcCommand extends Command {
   override def execute(command: CommandModel): ReturnType = {
     require(command.args.length == 1, " Cat must have 1 arg")
 
-    val lines = if (Files.exists(Paths.get(command.args.head.value))) {
+    val lines = if (Try(
+      Paths.get(command.args.head.value)
+    )
+      .toOption
+      .map(Files.exists(_))
+      .exists(p ⇒ p)) {
       scala.io.Source.fromFile(command.args.head.value).getLines()
     } else {
       command.args.head.value.split("\n").toSeq
