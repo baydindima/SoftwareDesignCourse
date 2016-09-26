@@ -12,9 +12,9 @@ import org.scalatest.{FlatSpec, Matchers}
 class WcCommandSpec extends FlatSpec with Matchers {
 
   it should "return lines count, words count and chars count" in {
-    val text = "first word\nsecond word"
+    val text = "first word second word"
     new WcCommand().execute(
-      CommandModel(CommandName("wc"), CommandArg(text))) shouldEqual "2 4 21"
+      CommandModel(CommandName("wc"), CommandArg(text))) shouldEqual "1 4 22"
   }
 
 }
