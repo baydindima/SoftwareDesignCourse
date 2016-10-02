@@ -15,8 +15,9 @@ import edu.spbau.master.software.design.shell.model.CommandModel
 class CdCommand extends Command {
   override def execute(command: CommandModel): ReturnType = {
     require(command.args.length == 1, " Cd must have 1 arg")
-    require(Files.exists(Paths.get(command.args.head.value)), "No such directory")
-    System.setProperty("user.dir", new File(command.args.head.value).getCanonicalPath)
+    val resolvedPath = Paths.get(System.getProperty("user.dir")).resolve(command.args.head.value).normalize().toAbsolutePath
+    require(Files.exists(resolvedPath), "No such directory")
+    System.setProperty("user.dir", resolvedPath.toString)
     ""
   }
 }
