@@ -8,6 +8,13 @@ import edu.spbau.master.software.design.shell.model.CommandModel
 
 /**
   * Created by dsavvinov on 20.10.16.
+  *
+  * Implementation of `cd` command
+  *
+  * Usage:
+  * `$ cd <RELATIVE PATH TO DESTINATION>`
+  *
+  * **Note** that this command will change `user.dir` property of running JVM.
   */
 class CdCommand extends Command {
   override def execute(command: CommandModel): ReturnType = {

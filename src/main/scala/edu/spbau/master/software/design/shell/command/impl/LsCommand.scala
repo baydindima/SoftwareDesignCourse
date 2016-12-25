@@ -9,6 +9,15 @@ import edu.spbau.master.software.design.shell.model.CommandModel
 
 /**
   * Created by dsavvinov on 20.10.16.
+  *
+  * Implementation of "ls" command.
+  *
+  * Usage:
+  * `$ ls`
+  *
+  * Outputs list of files and folders in current dir.
+  *
+  * **Note** that this command uses system property 'user.dir' of JVM.
   */
 class LsCommand extends Command {
   override def execute(command: CommandModel): ReturnType = {
